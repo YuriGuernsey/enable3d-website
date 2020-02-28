@@ -109,9 +109,8 @@
           let r2 = this.third.add.box({ y: 4.75, x: 0, z: 3.5, width: 8, height: 4, ...commonSetting })
           r1.rotateX(Math.PI / 4)
           r2.rotateX(-Math.PI / 4)
-          r1.shape = r2.shape = 'box'
-          this.third.physics.add.existing(r1, { collisionFlags: 3 })
-          this.third.physics.add.existing(r2, { collisionFlags: 3 })
+          this.third.physics.add.existing(r1, { collisionFlags: 3, breakable: true })
+          this.third.physics.add.existing(r2, { collisionFlags: 3, breakable: true })
         }
       }
 
