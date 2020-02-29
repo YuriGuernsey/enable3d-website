@@ -80,11 +80,14 @@
 
               object.add(suzanne.clone())
               object.position.set(i * 3 - 7.5, 1.2, 0)
-              object.shape = shape
 
-              let options = {}
-              if (shape === 'box') options = boxShape
-              else if (shape === 'compound') options = compoundShape
+              // we se addChildren to false since we do not want
+              // to create a body from suzanne's child meshes
+              // (it would create a box 1x1x1 since no matching shape would be found)
+              let options = { addChildren: false, shape }
+
+              if (shape === 'box') options = { ...options, ...boxShape }
+              else if (shape === 'compound') options = { ...options, ...compoundShape }
 
               this.third.add.existing(object)
               this.third.physics.add.existing(object, options)
