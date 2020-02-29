@@ -68,7 +68,7 @@
           }
 
           // add robot
-          this.third.load.gltf('robot', gltf => {
+          this.third.load.cache.gltf('robot', gltf => {
             this.robot = this.third.new.extendedObject3D()
             this.robot.add(gltf.scene)
 

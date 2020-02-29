@@ -40,7 +40,7 @@
           this.third.renderer.gammaFactor = 1.5
 
           // add rifle
-          this.third.load.gltf('rifle', object => {
+          this.third.load.cache.gltf('rifle', object => {
             const rifle = object.scene
 
             this.rifle = this.third.new.extendedObject3D()

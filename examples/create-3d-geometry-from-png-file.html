@@ -42,7 +42,7 @@
             this.third.haveSomeFun(1)
           })
 
-          const heightmap = this.third.texture.get('heightmap-simple')
+          const heightmap = this.third.load.cache.texture('heightmap-simple')
 
           const mesh = this.third.add.heightMap(heightmap)
           if (mesh) {

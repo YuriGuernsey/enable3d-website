@@ -42,7 +42,8 @@
           // this.third.physics.debug.enable()
 
           // get the shape from the sve file
-          const bridgeShape = this.third.transform.fromSVGtoShape('bridge')
+          const svg = this.cache.html.get('bridge')
+          const bridgeShape = this.third.transform.fromSVGtoShape(svg)
 
           // set scaling variable
           const scale = 25

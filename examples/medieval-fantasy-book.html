@@ -62,7 +62,7 @@
           /**
            * Add Book
            */
-          this.third.load.gltf('book', object => {
+          this.third.load.cache.gltf('book', object => {
             const scene = object.scenes[0]
 
             const book = this.third.new.extendedObject3D()
@@ -105,7 +105,7 @@
           /**
            * Create Player
            */
-          this.third.load.gltf('box_man', object => {
+          this.third.load.cache.gltf('box_man', object => {
             const man = object.scene.children[0]
 
             this.man = this.third.new.extendedObject3D()

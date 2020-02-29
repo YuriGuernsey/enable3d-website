@@ -36,7 +36,7 @@
           this.third.physics.debug.enable()
 
           // add suzanne (the monkey's name is suzanne)
-          this.third.load.gltf('suzanne', gltf => {
+          this.third.load.cache.gltf('suzanne', gltf => {
             // If you can, always use simple shapes like BOX, SPHERE, CONE etc.
             // The second most efficient shape is a COMPOUND, which merges multiple simple shapes.
             // Prefer HULL over CONVEX MESH.

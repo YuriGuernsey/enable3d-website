@@ -34,7 +34,7 @@
           this.third.camera.position.set(20, 20, 40)
 
           // get the texture and add the ground
-          const grass = this.third.texture.get('grass')
+          const grass = this.third.load.cache.texture('grass')
           grass.wrapS = grass.wrapT = 1000 // RepeatWrapping
           grass.offset.set(0, 0)
           grass.repeat.set(2, 2)
