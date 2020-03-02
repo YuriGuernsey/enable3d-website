@@ -10,11 +10,16 @@
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/dracula.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/vs2015.min.css" />
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
   </head>
 
   <body>
+    <style>
+      .hljs-comment {
+        color: gray !important;
+      }
+    </style>
     <header>
       <div class="container">
         <a href="/">
@@ -45,11 +50,7 @@
         'v2-checklist'
       ]
 
-      const fetches = docs.map(doc => {
-        return fetch(`/docs/${doc}.md`)
-      })
-
-      Promise.all(fetches)
+      Promise.all(docs.map(doc => fetch(`/docs/${doc}.md`)))
         .then(responses => {
           responses.forEach(res => {
             if (res.status === 200) {
