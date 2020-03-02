@@ -30,6 +30,7 @@
     <section class="content">
       <div class="container">
         <h1>Documentation</h1>
+        <div id="loading">loading...</div>
         <div id="marked"></div>
       </div>
     </section>
@@ -52,6 +53,8 @@
 
       Promise.all(docs.map(doc => fetch(`/docs/${doc}.md`)))
         .then(responses => {
+          document.getElementById('loading').remove()
+
           responses.forEach(res => {
             if (res.status === 200) {
               res.text().then(function(data) {

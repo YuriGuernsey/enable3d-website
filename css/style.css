@@ -79,6 +79,7 @@ a:hover {
 
 ul.examples-list {
   list-style-type: none;
+  padding-left: 4px;
 }
 
 ul.examples-list li {
