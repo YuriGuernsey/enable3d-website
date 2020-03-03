@@ -34,13 +34,12 @@ physics.add.existing(cube)
 ```javascript
 // example: https://enable3d.io/examples/compare-physics-body-shapes.html
 
-physics.add.existing(
-  object,
-  (shapes: [
+physics.add.existing(object, {
+  shapes: [
     { shape: 'box', width: 0.5, height: 1, depth: 0.4, y: -0.5, z: 0.5 },
     { shape: 'box', width: 2.4, height: 0.6, depth: 0.4, z: -0.4, y: 0.2 },
     { shape: 'sphere', radius: 0.65, z: -0.25, y: 0.35 },
     { shape: 'box', width: 1.5, height: 0.8, depth: 1, y: 0.2, z: 0.2 }
-  ])
-)
+  ]
+})
 ```
