@@ -1,31 +1,46 @@
 ## Compound shapes
 
-Compound shapes are an efficient way to add complex geometry to the scene and are created by piecing together the [available shapes](https://github.com/chandlerprall/Physijs/wiki/Basic-Shapes) in Physijs to create a larger, more intricate geometry.
+There are 2 ways to use compound shapes. Automatically generated and manually generated. The automatically generated follow the parent child structure of three.js objects. To manually generate a compound shape, simply add multiple shapes to the second parameter of `physics.add.existing()`
 
-In three.js you would add these child geometries together by adding them to the parent objects, for example:
-
-```javascript
-var parent = new THREE.Mesh(new THREE.CubeGeometry(5, 5, 5), new THREE.MeshBasicMaterial({ color: 0x888888 }))
-
-var child = new THREE.Mesh(new THREE.SphereGeometry(2.5), new THREE.MeshBasicMaterial({ color: 0x888888 }))
-child.position.z = 5
-
-parent.add(child)
-scene.add(parent)
-```
-
-The above code would create a 5x5x5 cube and attach a 2.5 radius sphere to it 5 units away on the z axis. Moving and rotating the parent object directly affects the child. In order to keep the Physijs plugin simple and uncomplicated this is **exactly** how its compound shapes work. The only change needed is to replace `THREE.Mesh` with the Physijs equivalents:
+### Automatically
 
 ```javascript
-var parent = new Physijs.BoxMesh(new THREE.CubeGeometry(5, 5, 5), new THREE.MeshBasicMaterial({ color: 0x888888 }))
+// example: https://enable3d.io/examples/native-three-with-physics.html
 
-var child = new Physijs.SphereMesh(new THREE.SphereGeometry(2.5), new THREE.MeshBasicMaterial({ color: 0x888888 }))
-child.position.z = 5
+const material = new THREE.MeshLambertMaterial({ color: 0xffff00 })
 
-parent.add(child)
-scene.add(parent)
+const sphere = new THREE.Mesh(new THREE.SphereBufferGeometry(0.25), material)
+sphere.position.set(0, -0.8, 0)
+
+const cube = new THREE.Mesh(new THREE.BoxBufferGeometry(0.4, 0.8, 0.4), material)
+cube.position.set(5, 2, 5)
+
+// add sphere as child of cube
+cube.add(sphere)
+
+// add cube to the scene
+scene.add(cube)
+
+cube.position.set(5, 5, 5)
+cube.rotation.set(0, 0.4, 0.2)
+
+// add physics to the cube
+// this will automatically generate a compound shape
+physics.add.existing(cube)
 ```
 
-The only thing you need to remember when working with compound objects is **all** children **must** be added to the parent before the parent is added to the scene. When a parent is put into the scene its shape is finalized and cannot be added to.
+### Manually
 
-Look at the [compound shapes](https://github.com/chandlerprall/Physijs/blob/master/examples/compound.html) example for more details on this implementation.
+```javascript
+// example: https://enable3d.io/examples/compare-physics-body-shapes.html
+
+physics.add.existing(
+  object,
+  (shapes: [
+    { shape: 'box', width: 0.5, height: 1, depth: 0.4, y: -0.5, z: 0.5 },
+    { shape: 'box', width: 2.4, height: 0.6, depth: 0.4, z: -0.4, y: 0.2 },
+    { shape: 'sphere', radius: 0.65, z: -0.25, y: 0.35 },
+    { shape: 'box', width: 1.5, height: 0.8, depth: 1, y: 0.2, z: 0.2 }
+  ])
+)
+```
