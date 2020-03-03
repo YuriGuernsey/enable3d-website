@@ -26,8 +26,8 @@ When an object has a high velocity, collisions can be missed if it moves through
 
 ```javascript
 // Enable CCD if the object moves more than 1 meter in one simulation frame
-object.body.ammo.setCcdMotionThreshold(1)
+object.body.setCcdMotionThreshold(1)
 
 // Set the radius of the embedded sphere such that it is smaller than the object
-object.body.ammo.mesh.setCcdSweptSphereRadius(0.2)
+object.body.setCcdSweptSphereRadius(0.2)
 ```
