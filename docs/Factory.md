@@ -3,7 +3,7 @@
 Enable3d provides a simple factory for creating physical objects.
 
 ```js
-// will add a 5x3x1 red kinematic box
+// will add a 5x3x1 red box
 const box = physics.add.box(
   { x: 1, y: 2, z: 10, width: 5, height: 3, depth: 1, mass: 2, collisionFlags: 0 },
   { lambert: { color: 'red', transparent: true, opacity: 0.5 } }

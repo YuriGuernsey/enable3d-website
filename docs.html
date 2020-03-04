@@ -37,6 +37,8 @@
     <script>
       const docs = [
         'Basic-Setup',
+        'Standalone-Mode',
+        'Phaser-Extension',
         'Basic-Shapes',
         'Collisions',
         'Compound-Shapes',
@@ -44,9 +46,7 @@
         'Factory',
         'Constraints',
         'Object-scaling',
-        'Pausing-Simulation',
-        'Physics-Configuration',
-        'v2-checklist'
+        'Physics-Configuration'
       ]
 
       Promise.all(docs.map(doc => fetch(`/docs/${doc}.md`)))

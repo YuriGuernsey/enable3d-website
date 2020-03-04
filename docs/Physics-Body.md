@@ -2,7 +2,12 @@
 
 ### Types
 
-There are 4 different body types you can choose from by setting `object.body.setCollisionFlags(number)` accordingly. 0 - Dynamic, 1 - Static, 2 - Kinematic, 4 - Ghost (aka Sensor or NO_CONTACT_RESPONSE).
+There are 4 different body types you can choose from by setting `object.body.setCollisionFlags(number)` accordingly.
+
+- 0 - Dynamic
+- 1 - Static
+- 2 - Kinematic
+- 4 - Ghost (aka Sensor or NO_CONTACT_RESPONSE).
 
 #### Dynamic
 

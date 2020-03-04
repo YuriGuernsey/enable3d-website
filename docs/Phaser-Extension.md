@@ -1,56 +1,56 @@
 ## Using Enable3d as a 3d objects and physics extension for Phaser
 
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <script src="/lib/three.min.js"></script>
-    <script src="/lib/enable3d.phaserGame"></script>
-  </head>
+```js
+// STEP 1: Add the libraries with "npm install phaser @enable3d/phaser-extension"
+import Phaser from 'phaser'
+import enable3d, { Scene3D, Canvas } from '@enable3d/phaser-extension'
 
-  <body>
-    <script>
-      const { enable3d, Scene3D, Canvas } = ENABLE3D
+// Extend your Scene with Scene3D instead of Phaser.Scene
+class MainScene extends Scene3D {
+  constructor() {
+    super({ key: 'MainScene' })
+  }
 
-      class MainScene extends Scene3D {
-        constructor() {
-          super({ key: 'MainScene' })
-        }
+  init() {
+    // Request a worm whole to the third dimension.
+    this.requestThirdDimension()
+  }
 
-        init() {
-          this.requestThirdDimension()
-        }
+  create() {
+    // Drive through the hole into the third dimension.
+    this.accessThirdDimension()
 
-        create() {
-          this.accessThirdDimension()
+    // Journey through the third dimension at warp speed.
+    this.third.warpSpeed()
 
-          // add a demo scene
-          this.third.warpSpeed()
+    // Add your first 3d object.
+    this.third.add.box()
 
-          // add blue box
-          this.third.physics.add.box({ y: 2 }, { lambert: { color: 0x2194ce } })
-        }
-      }
+    // Add another box with physics enabled.
+    this.third.physics.add.box()
+  }
+}
 
-      const config = {
-        // use Phaser.WEBGL
-        type: Phaser.WEBGL,
-        scale: {
-          mode: Phaser.Scale.FIT,
-          autoCenter: Phaser.Scale.CENTER_BOTH,
-          width: window.innerWidth * Math.max(1, window.devicePixelRatio / 2),
-          height: window.innerHeight * Math.max(1, window.devicePixelRatio / 2)
-        },
-        scene: [MainScene],
-        // add a custom canvas
-        ...Canvas()
-      }
+const config = {
+  // Set type to Phaser.WEBGL
+  type: Phaser.WEBGL,
+  backgroundColor: '#ffffff',
+  scale: {
+    parent: 'phaser-game',
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+    width: 1280,
+    height: 720
+  },
+  scene: [MainScene],
+  // Add a custom canvas
+  // The default Phaser canvas is not compatible with three.js
+  ...Canvas()
+}
 
-      window.addEventListener('load', () => {
-        // wrap enable3d around your Phaser game and load ammo from the /lib folder
-        enable3d(() => new Phaser.Game(config)).withPhysics('/lib')
-      })
-    </script>
-  </body>
-</html>
+window.addEventListener('load', () => {
+  // Wrap enable3d around your Phaser game.
+  // (First copy all ammo file to your public folder)
+  enable3d(() => new Phaser.Game(config)).withPhysics('/lib')
+})
 ```

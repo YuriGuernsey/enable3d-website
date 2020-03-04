@@ -16,6 +16,7 @@ Take a look at the [examples](https://enable3d.io/examples.html) to see what Ena
 
   <body>
     <script>
+      // or get it from npm @enable3d/ammo-physics
       const { AmmoPhysics, PhysicsLoader } = ENABLE3D
 
       const MainScene = () => {
